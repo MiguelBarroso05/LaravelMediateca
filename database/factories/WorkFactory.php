@@ -30,14 +30,14 @@ class WorkFactory extends Factory
         ];
     }
 
-    public function books()
+    public function books(): WorkFactory|Factory
     {
         return $this->state(fn(array $attributes) => [
             'work_type_id' => 1,
             'number_of_pages' => fake()->numberBetween(1, 1000),
         ]);
     }
-    public function dvds()
+    public function dvds(): WorkFactory|Factory
     {
         return $this->state(fn(array $attributes) => [
             'work_type_id' => 2,

@@ -12,7 +12,8 @@ class WorkTypeController extends Controller
      */
     public function index()
     {
-        //
+        $workTypes = WorkType::all();
+        return view('work_types.index', ['workTypes' => WorkType::all()]);
     }
 
     /**
@@ -34,9 +35,9 @@ class WorkTypeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(WorkType $workType)
+    public function show(WorkType $type)
     {
-        //
+        return view('work_types.show', ['type' => $type]);
     }
 
     /**
@@ -58,8 +59,9 @@ class WorkTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(WorkType $workType)
+    public function destroy(WorkType $type)
     {
-        //
+        $type->delete();
+        return redirect()->route('types.index');
     }
 }

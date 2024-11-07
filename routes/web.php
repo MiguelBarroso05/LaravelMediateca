@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WorkTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,3 +14,4 @@ Route::get('/admin/dashboard', function () {
 Route::get('/client/dashboard', function () {
     return view('client.dashboard');
 });
+Route::resource('types', WorkTypeController::class);
