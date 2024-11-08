@@ -7,6 +7,18 @@ use Illuminate\Http\Request;
 
 class WorkTypeController extends Controller
 {
+
+
+    protected array $rules = [
+        'name' => 'required|min:3|max:255',
+        'description' => 'nullable',
+    ];
+    protected array $messages = [
+        'name'.'min' => 'The name must be at least 3 characters.',
+        'required' => 'The :attribute field is required.',
+    ];
+
+
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +33,7 @@ class WorkTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('work_types.create');
     }
 
     /**
@@ -29,7 +41,15 @@ class WorkTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate($this->rules); // validated
+        try {
+            $type = new WorkType($validated);
+            $type->save();
+            return redirect(route('types.create'))->with('success', "Type created successfully [#$type->id]");
+        }catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Something went wrong. Please try again.']);
+        }
+
     }
 
     /**

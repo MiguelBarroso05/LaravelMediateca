@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col">
                 <h1 class="page-title">Lista de Tipo de Obras</h1>
-                <a href="/work_types/create" class="btn btn-primary">Criar Novo Tipo</a>
+                <a href="{{route('types.create')}}" class="btn btn-primary">Criar Novo Tipo</a>
                 <div class="card mt-4">
                     <div class="table-responsive">
                         <table class="table">

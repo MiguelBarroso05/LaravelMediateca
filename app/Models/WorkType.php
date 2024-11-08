@@ -10,4 +10,5 @@ class WorkType extends Model
 {
     /** @use HasFactory<\Database\Factories\WorkTypeFactory> */
     use HasFactory, SoftDeletes;
+    protected $fillable = ['name', 'description'];
 }
