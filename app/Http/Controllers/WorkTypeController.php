@@ -24,7 +24,7 @@ class WorkTypeController extends Controller
      */
     public function index()
     {
-        $workTypes = WorkType::all();
+
         return view('work_types.index', ['workTypes' => WorkType::all()]);
     }
 
@@ -46,7 +46,7 @@ class WorkTypeController extends Controller
             $type = new WorkType($validated);
             $type->save();
             return redirect(route('types.create'))->with('success', "Type created successfully [#$type->id]");
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Something went wrong. Please try again.']);
         }
 
