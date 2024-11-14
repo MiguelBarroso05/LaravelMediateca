@@ -13,7 +13,8 @@
                     <div class="card-body">
                         <!-- Alerta para mensagem de sucesso -->
                         @if(session('success'))
-                            <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div id="success-alert" class="alert alert-success alert-dismissible fade show"
+                                 role="alert">
                                 {{session('success')}}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
@@ -35,7 +36,8 @@
                             <div class="mb-3">
                                 <label for="nome" class="form-label required">Nome do Tipo de Obra</label>
                                 <input type="text" id="nome" name="name"
-                                       class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" required>
+                                       class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}"
+                                       required>
                                 @error('name')
                                 <div class="invalid-feedback">{{$message}}
                                 </div>
@@ -65,16 +67,16 @@
 
 @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const successAlert = document.getElementById('success-alert');//
             if (successAlert) {
-                setTimeout(function() {
+                setTimeout(function () {
                     // Adiciona a classe 'fade' e remove a classe 'show' para iniciar a transição de fechamento
                     successAlert.classList.remove('show');
                     successAlert.classList.add('fade');
 
                     // Remove o elemento do DOM depois da transição
-                    setTimeout(function() {
+                    setTimeout(function () {
                         successAlert.remove();
                     }, 500); // Ajuste o tempo conforme o efeito 'fade'
                 }, 3000); // Fecha o alerta após 3 segundos

@@ -19,12 +19,12 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Biografia:</label>
-                        <p>{{$author-> biography}}</p>
+                        <p>{{$author-> biography ?? 'N/A'}}</p>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Foto:</label>
                         <div>
-                            <img src="caminho/para/foto.jpg" alt="Foto do Autor" width="150">
+                            <img src="{{$author-> image ?? asset('imgs/no-image.png') }}" alt="Foto do Autor" width="150">
                         </div>
                     </div>
                     <div class="text-end">

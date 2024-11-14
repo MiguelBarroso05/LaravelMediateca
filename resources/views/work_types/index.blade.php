@@ -26,7 +26,7 @@
                                     <td>{{ $workType->description }}</td>
                                     <td class="text-end" >
                                         <a href="{{route('types.show', $workType)}}" class="btn btn-info">Ver</a>
-                                        <a href="" class="btn btn-warning">Editar</a>
+                                        <a href="{{route('types.edit', $workType)}}" class="btn btn-warning">Editar</a>
                                         <form action="{{ route('types.destroy', $workType) }}" method="POST" style="display: inline-block">
                                             @method('DELETE')
                                             @csrf

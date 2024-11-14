@@ -63,17 +63,25 @@ class WorkTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(WorkType $workType)
+    public function edit(WorkType $type)
     {
-        //
+        return view('work_types.edit', ['type' => $type]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, WorkType $workType)
+    public function update(Request $request, WorkType $type)
     {
-        //
+        $validated = $request->validate($this->rules, $this->messages); // validated
+        try {
+            $type->update($validated);
+            $type->save();
+            session()->put(['success' => "Type updated successfully"]);
+            return redirect(route('types.show',$type));
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Something went wrong. Please try again.']);
+        }
     }
 
     /**

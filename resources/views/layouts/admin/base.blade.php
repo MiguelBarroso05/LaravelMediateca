@@ -59,7 +59,24 @@
                             </span>
                         </a>
                     </li>
+                    <!-- Obras Section -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#admin-menu" data-bs-toggle="dropdown"
+                           data-bs-auto-close="false" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <i class="ti ti-book fs-5"></i>
+                            </span>
+                            <span class="nav-link-title">
+                               Obras
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item active" href="{{route('types.index')}}">Tipos de Obras</a>
+                            <a class="dropdown-item active" href="{{route('authors.index')}}">Autores</a>
 
+                            <!-- Outros links para Obras podem ser adicionados aqui -->
+                        </div>
+                    </li>
                     <!-- Admin Section -->
                     <li class="nav-item dropdown active">
                         <a class="nav-link dropdown-toggle" href="#admin-menu" data-bs-toggle="dropdown"
@@ -107,7 +124,7 @@
                     <div class="col">
                         <!-- Page pre-title -->
                         <div class="page-pretitle">Admin - Nome ....</div>
-                        <h2 class="page-title">Dashboard</h2>
+                        <h2 class="page-title">@yield('title')</h2>
                     </div>
                     <!-- Page title actions -->
                     <div class="col-auto ms-auto d-print-none">
@@ -122,7 +139,6 @@
         <div class="page-body">
             <div class="container-xl">
                 @yield('content')
-
             </div>
         </div>
         {{--Footer--}}
@@ -137,7 +153,7 @@
     </div>
 </div>
 <!-- Libs JS -->
-@vite(['resources/js/app.js']);
+@vite(['resources/js/app.js'])
 @stack('scripts')
 </body>
 </html>
