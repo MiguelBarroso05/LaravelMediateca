@@ -1,7 +1,15 @@
 @extends("layouts.admin.base")
 
 @section("content")
-    <div class="card">
+    <div class="container">
+        <div class="row">
+            <div class="col mb-3 d-flex justify-content-end">
+                <a href="{{route('authors.create')}}" class="btn btn-primary">Criar Novo Autor</a>
+            </div>
+
+        </div>
+
+        <div class="card">
         <div class="card-body border-bottom py-3">
             <div class="d-flex">
                 <div class="text-secondary">
@@ -45,8 +53,8 @@
                         <td>{{ $author->id }}</td>
                         <td>{{ $author->name }}</td>
                         <td class="w-50">{{$author->biography}}</td>
-                        <td><img src="caminho/para/foto.jpg" alt="Foto do Autor" width="50"></td>
-                        <td class="text-end">
+                        <td><img src="{{$author-> image ?asset('storage/'.$author->image): asset('imgs/no-image.png') }}" alt="Foto do Autor" width="50"></td>
+                        <td class="text-end" style="justify-content: center; align-content: center">
                             <a href="{{route('authors.show', $author)}}" class="btn btn-info"><i class="ti ti-eye"></i></a>
                             <a href="{{route('authors.edit', $author)}}" class="btn btn-warning"><i class="fa fa-pencil"
                                                                                                     aria-hidden="true"></i></a>

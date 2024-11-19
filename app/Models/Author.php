@@ -11,5 +11,8 @@ class Author extends Model
     /** @use HasFactory<\Database\Factories\AuthorFactory> */
     use HasFactory, SoftDeletes;
 
+    /**
+     * @var false|mixed|string
+     */
     protected $fillable = ['name', 'biography'];
 }

@@ -12,7 +12,7 @@ class AuthorController extends Controller
     protected array $rules = [
         'name' => 'required|min:3|max:255',
         'biography' => 'nullable',
-        'image' => 'nullable',
+        'image' => 'nullable|image|max:2048',
     ];
     protected array $messages = [
         'name'.'min' => 'The name must be at least 3 characters.',
@@ -44,7 +44,18 @@ class AuthorController extends Controller
     {
         $validated = $request->validate($this->rules); // validated
         try {
-            $author = new Author($validated);
+            $author = new Author();
+            $author->name=$validated['name'];
+            $author->biography=$validated['biography'];
+            $author->save();
+
+            if($request->hasFile('image')) {
+                $image =$request->file('image');
+                $filename = $author->id . '_' .preg_replace('/\s+/', '_', strtolower($author->name)). '.' . $image->getClientOriginalExtension();
+                $url = $image->storeAs('authors', $filename, 'public');
+                $author->image = $url;
+                $author->save();
+            }
             $author->save();
             return redirect(route('author.create'))->with('success', "Author created successfully [#$author->id]");
         }catch (\Exception $e) {
